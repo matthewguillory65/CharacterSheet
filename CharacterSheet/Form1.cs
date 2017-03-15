@@ -111,5 +111,10 @@ namespace CharacterSheet
         {
 
         }
+
+        private void Characterchoice_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
