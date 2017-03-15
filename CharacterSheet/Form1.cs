@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
+using System.Diagnostics;
 
 namespace CharacterSheet
 {
@@ -17,13 +14,9 @@ namespace CharacterSheet
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        void SetUp()
         {
-            foreach (Players player in Singleton.Instance.mHeros)
-                PlayerSelection.Items.Add(player.Name);
-
-            foreach (Items item in Singleton.Instance.mItems)
-                ItemSelection.Items.Add(item.Name);
+            AssessmentSerialization<List<Players>>.Serialize("ListofPlayersDefualt", Singleton.Instance.mHeros);
         }
 
         private void comboBox(object sender, EventArgs e)
@@ -36,20 +29,13 @@ namespace CharacterSheet
                     break;
                 }
             }
-        }
-
-        private void currentPlayerDefense(object sender, EventArgs e)
-        {
-            Singleton.Instance.currentHero.m_Defense.ToString();
-        }
-
-        private void currentPlayerAttack(object sender, EventArgs e)
-        {
-            Singleton.Instance.currentHero.m_Attack.ToString();
+            PlayerAttack.Text = Singleton.Instance.currentHero.m_Attack.ToString();
+            PlayerDefense.Text = Singleton.Instance.currentHero.Defense.ToString();
         }
 
         private void ItemSelections(object sender, EventArgs e)
         {
+            int NewAttack;
             foreach (Items item in Singleton.Instance.mItems)
             {
                 if (ItemSelection.SelectedItem.Equals(item.m_Name))
@@ -58,17 +44,45 @@ namespace CharacterSheet
                     break;
                 }
             }
-        }
-
-        public void ItemEnhancement()
-        {
-            int NewAttack;
-            NewAttack = Singleton.Instance.currentItem.Attack + Singleton.Instance.currentItem.Attack;
+            NewAttack = Singleton.Instance.currentHero.Attack + Singleton.Instance.currentItem.Attack;
+            ItemCombo.Text = NewAttack.ToString();
         }
 
         private void ItemCombo_TextChanged(object sender, EventArgs e)
         {
-            ItemEnhancement();
+            
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+            foreach (Players player in Singleton.Instance.mHeros)
+                PlayerSelection.Items.Add(player.Name);
+
+            foreach (Items item in Singleton.Instance.mItems)
+                ItemSelection.Items.Add(item.Name);
+        }
+
+        private void SaveData_Click(object sender, EventArgs e)
+        {
+            AssessmentSerialization<Players>.Serialize("CurrentPlayer", Singleton.Instance.currentHero);
+            AssessmentSerialization<Items>.Serialize("CurrentItem", Singleton.Instance.currentItem);
+            PlayerSelection.SelectionStart = PlayerSelection.SelectedIndex;
+            ItemSelection.SelectionStart = ItemSelection.SelectedIndex;
+            SaveLoad.AppendText("                      Saved");
+        }
+
+        private void LoadData_Click(object sender, EventArgs e)
+        {
+            Singleton.Instance.currentHero = AssessmentSerialization<Players>.Deserialize("CurrentPlayer");
+            Singleton.Instance.currentItem = AssessmentSerialization<Items>.Deserialize("CurrentItem");
+            PlayerSelection.SelectedItem = Singleton.Instance.currentHero.Name;
+            ItemSelection.SelectedItem = Singleton.Instance.currentItem.Name;
+            SaveLoad.AppendText("                    Loaded");
+        }
+
+        private void SaveLoad_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

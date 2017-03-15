@@ -8,6 +8,7 @@ namespace CharacterSheet
 {
     public class Players
     {
+        Players() { }
         public string m_Name;
         public int m_Attack;
         public int m_Defense;

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace CharacterSheet
 {
-    class Items
+    public class Items
     {
+        Items() { }
+
         public string m_Name;
         public int m_Attack;
 

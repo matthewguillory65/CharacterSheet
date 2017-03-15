@@ -27,8 +27,8 @@ namespace CharacterSheet
             Singleton.Instance.mHeros.Add(Chris);
 
             Items Sword = new Items(100, "Sword");
-            Items Gun = new Items(100, "Gun");
-            Items Rocket = new Items(100, "Rocket");
+            Items Gun = new Items(200, "Gun");
+            Items Rocket = new Items(300, "Rocket");
 
             Singleton.Instance.mItems = new List<Items>();
 
