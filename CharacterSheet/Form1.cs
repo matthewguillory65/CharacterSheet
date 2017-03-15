@@ -31,10 +31,9 @@ namespace CharacterSheet
                 }
             }
             //Makes the attack and defense able to be seen
-            PlayerAttack.Text = Singleton.Instance.currentHero.m_Attack.ToString();
+            PlayerAttack.Text = Singleton.Instance.currentHero.Attack.ToString();
             PlayerDefense.Text = Singleton.Instance.currentHero.Defense.ToString();
         }
-
 
         private void ItemSelections(object sender, EventArgs e)
         {
@@ -70,10 +69,10 @@ namespace CharacterSheet
             ArmorCombo.Text = NewDefense.ToString();
         }
 
-        private void ItemCombo_TextChanged(object sender, EventArgs e)
-        {
+        //private void ItemCombo_TextChanged(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
@@ -129,7 +128,27 @@ namespace CharacterSheet
             SaveLoad.AppendText("                    Loaded");
         }
 
-        private void updateData()
+        //private void updateData()
+        //{
+            
+        //}
+
+        //private void SaveLoad_TextChanged(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void ArmorCombo_TextChanged(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void Characterchoice_Click(object sender, EventArgs e)
+        //{
+
+        //}
+
+        private void UpdateD_Click(object sender, EventArgs e)
         {
             //This was made to update the data whenever you choose a new Player, it updates the attack and defense after clicking the new Player
             int NewAttack;
@@ -149,27 +168,6 @@ namespace CharacterSheet
                 NewDefense = Singleton.Instance.currentHero.Defense + Singleton.Instance.currentArmor.Defense;
                 ArmorCombo.Text = NewDefense.ToString();
             }
-        }
-
-        private void SaveLoad_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ArmorCombo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Characterchoice_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UpdateD_Click(object sender, EventArgs e)
-        {
-            //Whenever you choose a new Player, use the Update button to fix the values
-            updateData();
         }
     }
 }

@@ -30,7 +30,12 @@ namespace CharacterSheet
             get { return m_Defense; }
             set { m_Defense = value; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="attack"></param>
+        /// <param name="defense"></param>
+        /// <param name="name"></param>
         public Players(int attack, int defense, string name)
         {
             m_Name = name;
