@@ -18,10 +18,10 @@ namespace CharacterSheet
         {
             AssessmentSerialization<List<Players>>.Serialize("ListofPlayersDefualt", Singleton.Instance.mHeros);
         }
-
-        //This lets you select a Player from a drop down box
+        
         private void comboBox(object sender, EventArgs e)
         {
+            //This lets you select a Player from a drop down box
             foreach (Players player in Singleton.Instance.mHeros)
             {
                 if (PlayerSelection.SelectedItem.Equals(player.Name))
@@ -95,18 +95,15 @@ namespace CharacterSheet
             //Saves the current information for currentHero, currentItem, and currentArmor
             if (PlayerSelection != null)
             {
-                AssessmentSerialization<Players>.Serialize("CurrentPlayer", Singleton.Instance.currentHero);
-                //PlayerSelection.SelectionStart = PlayerSelection.SelectedIndex;//This is the currentHero
+                AssessmentSerialization<Players>.Serialize("CurrentPlayer", Singleton.Instance.currentHero);//If there is no Player chosen, the program will not break
             }
             if (ItemSelection != null)
             {
-                AssessmentSerialization<Items>.Serialize("CurrentItem", Singleton.Instance.currentItem);
-                //ItemSelection.SelectionStart = ItemSelection.SelectedIndex;//This is the currentItem
+                AssessmentSerialization<Items>.Serialize("CurrentItem", Singleton.Instance.currentItem);//If there is no Item chosen, the program will not break
             }
             if (ArmorSelection != null)
             {
-                AssessmentSerialization<Armor>.Serialize("CurrentArmor", Singleton.Instance.currentArmor);
-                //ArmorSelection.SelectionStart = ArmorSelection.SelectedIndex;//This is the currentArmor
+                AssessmentSerialization<Armor>.Serialize("CurrentArmor", Singleton.Instance.currentArmor);//If there is no Armor chosen, the program will not break
             }
             SaveLoad.AppendText("                      Saved");
         }
@@ -116,19 +113,17 @@ namespace CharacterSheet
             //Loads the saved information for currentHero, currentItem, and currentArmor
             if (Singleton.Instance.currentHero != null)
             {
-                Singleton.Instance.currentHero = AssessmentSerialization<Players>.Deserialize("CurrentPlayer");
+                Singleton.Instance.currentHero = AssessmentSerialization<Players>.Deserialize("CurrentPlayer");//If there is no Player chosen, the program will not break
             }
             if (Singleton.Instance.currentItem != null)
             {
-                Singleton.Instance.currentItem = AssessmentSerialization<Items>.Deserialize("CurrentItem");
+                Singleton.Instance.currentItem = AssessmentSerialization<Items>.Deserialize("CurrentItem");//If there is no Item chosen, the program will not break
             }
             if (Singleton.Instance.currentArmor != null)
             {
-                Singleton.Instance.currentArmor = AssessmentSerialization<Armor>.Deserialize("CurrentArmor");
+                Singleton.Instance.currentArmor = AssessmentSerialization<Armor>.Deserialize("CurrentArmor");//If there is no Armor chosen, the program will not break
             }
             PlayerSelection.SelectedItem = Singleton.Instance.currentHero.Name;//Makes the comboBox currentHero equal the saved currentHero
-            //PlayerAttack.Text = Singleton.Instance.currentHero.Attack.ToString();//Updates the Attack after loading
-            //PlayerDefense.Text = Singleton.Instance.currentHero.Defense.ToString();//Updates the defense after loading
             ItemSelection.SelectedItem = Singleton.Instance.currentItem.Name;//Makes the comboBox currentItem equal the saved currentItem
             ArmorSelection.SelectedItem = Singleton.Instance.currentArmor.Name;//Makes the comboBox currentArmor equal the saved currentArmor
             SaveLoad.AppendText("                    Loaded");
@@ -139,17 +134,17 @@ namespace CharacterSheet
             //This was made to update the data whenever you choose a new Player, it updates the attack and defense after clicking the new Player
             int NewAttack;
             int NewDefense;
-            if (Singleton.Instance.currentHero != null)
+            if (Singleton.Instance.currentHero != null)//If there is no Player chosen, the program will not break
             {
                 PlayerAttack.Text = Singleton.Instance.currentHero.Attack.ToString();
                 PlayerDefense.Text = Singleton.Instance.currentHero.Defense.ToString();
             }
-            if (Singleton.Instance.currentItem != null)
+            if (Singleton.Instance.currentItem != null)//If there is no Item chosen, the program will not break
             {
                 NewAttack = Singleton.Instance.currentHero.Attack + Singleton.Instance.currentItem.Attack;
                 ItemCombo.Text = NewAttack.ToString();
             }
-            if (Singleton.Instance.currentArmor != null)
+            if (Singleton.Instance.currentArmor != null)//If there is no Armor chosen, the program will not break
             {
                 NewDefense = Singleton.Instance.currentHero.Defense + Singleton.Instance.currentArmor.Defense;
                 ArmorCombo.Text = NewDefense.ToString();
