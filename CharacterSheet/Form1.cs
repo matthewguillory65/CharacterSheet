@@ -48,6 +48,21 @@ namespace CharacterSheet
             ItemCombo.Text = NewAttack.ToString();
         }
 
+        private void ArmorSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int NewDefense;
+            foreach (Armor armor in Singleton.Instance.mArmor)
+            {
+                if (ArmorSelection.SelectedItem.Equals(armor.Name))
+                {
+                    Singleton.Instance.currentArmor = armor;
+                    break;
+                }
+            }
+            NewDefense = Singleton.Instance.currentHero.Defense + Singleton.Instance.currentArmor.Defense;
+            ArmorCombo.Text = NewDefense.ToString();
+        }
+
         private void ItemCombo_TextChanged(object sender, EventArgs e)
         {
             
@@ -60,14 +75,19 @@ namespace CharacterSheet
 
             foreach (Items item in Singleton.Instance.mItems)
                 ItemSelection.Items.Add(item.Name);
+
+            foreach (Armor armor in Singleton.Instance.mArmor)
+                ArmorSelection.Items.Add(armor.Name);
         }
 
         private void SaveData_Click(object sender, EventArgs e)
         {
             AssessmentSerialization<Players>.Serialize("CurrentPlayer", Singleton.Instance.currentHero);
             AssessmentSerialization<Items>.Serialize("CurrentItem", Singleton.Instance.currentItem);
+            AssessmentSerialization<Armor>.Serialize("CurrentArmor", Singleton.Instance.currentArmor);
             PlayerSelection.SelectionStart = PlayerSelection.SelectedIndex;
             ItemSelection.SelectionStart = ItemSelection.SelectedIndex;
+            ArmorSelection.SelectionStart = ArmorSelection.SelectedIndex;
             SaveLoad.AppendText("                      Saved");
         }
 
@@ -75,12 +95,19 @@ namespace CharacterSheet
         {
             Singleton.Instance.currentHero = AssessmentSerialization<Players>.Deserialize("CurrentPlayer");
             Singleton.Instance.currentItem = AssessmentSerialization<Items>.Deserialize("CurrentItem");
+            Singleton.Instance.currentArmor = AssessmentSerialization<Armor>.Deserialize("CurrentArmor");
             PlayerSelection.SelectedItem = Singleton.Instance.currentHero.Name;
             ItemSelection.SelectedItem = Singleton.Instance.currentItem.Name;
+            ArmorSelection.SelectedItem = Singleton.Instance.currentArmor.Name;
             SaveLoad.AppendText("                    Loaded");
         }
 
         private void SaveLoad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ArmorCombo_TextChanged(object sender, EventArgs e)
         {
 
         }

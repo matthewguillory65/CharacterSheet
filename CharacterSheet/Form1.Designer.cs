@@ -36,6 +36,12 @@
             this.SaveData = new System.Windows.Forms.Button();
             this.LoadData = new System.Windows.Forms.Button();
             this.SaveLoad = new System.Windows.Forms.TextBox();
+            this.ArmorSelection = new System.Windows.Forms.ComboBox();
+            this.ArmorCombo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // PlayerSelection
@@ -105,16 +111,77 @@
             // 
             this.SaveLoad.Location = new System.Drawing.Point(52, 157);
             this.SaveLoad.Name = "SaveLoad";
+            this.SaveLoad.ReadOnly = true;
             this.SaveLoad.Size = new System.Drawing.Size(100, 20);
             this.SaveLoad.TabIndex = 7;
             this.SaveLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.SaveLoad.TextChanged += new System.EventHandler(this.SaveLoad_TextChanged);
             // 
+            // ArmorSelection
+            // 
+            this.ArmorSelection.FormattingEnabled = true;
+            this.ArmorSelection.Location = new System.Drawing.Point(12, 60);
+            this.ArmorSelection.Name = "ArmorSelection";
+            this.ArmorSelection.Size = new System.Drawing.Size(121, 21);
+            this.ArmorSelection.TabIndex = 8;
+            this.ArmorSelection.SelectedIndexChanged += new System.EventHandler(this.ArmorSelection_SelectedIndexChanged);
+            // 
+            // ArmorCombo
+            // 
+            this.ArmorCombo.Location = new System.Drawing.Point(139, 60);
+            this.ArmorCombo.Name = "ArmorCombo";
+            this.ArmorCombo.ReadOnly = true;
+            this.ArmorCombo.Size = new System.Drawing.Size(56, 20);
+            this.ArmorCombo.TabIndex = 9;
+            this.ArmorCombo.TextChanged += new System.EventHandler(this.ArmorCombo_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(117, -3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Origional Attack";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(201, -3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Origional Defense";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(201, 63);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Defense with Armor";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(201, 112);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Attack with Item";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 217);
+            this.ClientSize = new System.Drawing.Size(558, 229);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ArmorCombo);
+            this.Controls.Add(this.ArmorSelection);
             this.Controls.Add(this.SaveLoad);
             this.Controls.Add(this.LoadData);
             this.Controls.Add(this.SaveData);
@@ -141,6 +208,12 @@
         private System.Windows.Forms.Button SaveData;
         private System.Windows.Forms.Button LoadData;
         private System.Windows.Forms.TextBox SaveLoad;
+        private System.Windows.Forms.ComboBox ArmorSelection;
+        private System.Windows.Forms.TextBox ArmorCombo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

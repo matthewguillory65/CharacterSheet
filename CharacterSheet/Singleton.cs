@@ -25,7 +25,9 @@ namespace CharacterSheet
         }
         public Players currentHero;
         public Items currentItem;
+        public Armor currentArmor;
         public List<Players> mHeros;
         public List<Items> mItems;
+        public List<Armor> mArmor;
     }
 }
