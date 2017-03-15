@@ -8,7 +8,9 @@ namespace CharacterSheet
 {
     public class Armor
     {
+        //Class for armor that allows modification to the Players defense stat
         Armor() { }
+        //Default Constructor
         string m_Name;
         int m_Defense;
 

@@ -19,6 +19,7 @@ namespace CharacterSheet
             AssessmentSerialization<List<Players>>.Serialize("ListofPlayersDefualt", Singleton.Instance.mHeros);
         }
 
+        //This lets you select a Player from a drop down box
         private void comboBox(object sender, EventArgs e)
         {
             foreach (Players player in Singleton.Instance.mHeros)
@@ -29,13 +30,16 @@ namespace CharacterSheet
                     break;
                 }
             }
+            //Makes the attack and defense able to be seen
             PlayerAttack.Text = Singleton.Instance.currentHero.m_Attack.ToString();
             PlayerDefense.Text = Singleton.Instance.currentHero.Defense.ToString();
         }
 
+
         private void ItemSelections(object sender, EventArgs e)
         {
             int NewAttack;
+            //When you click an Item in the comboBox, it becomes the currentItem and it's values
             foreach (Items item in Singleton.Instance.mItems)
             {
                 if (ItemSelection.SelectedItem.Equals(item.m_Name))
@@ -44,6 +48,7 @@ namespace CharacterSheet
                     break;
                 }
             }
+            //This adds the Players attack and item's value together to get a new attack
             NewAttack = Singleton.Instance.currentHero.Attack + Singleton.Instance.currentItem.Attack;
             ItemCombo.Text = NewAttack.ToString();
         }
@@ -51,6 +56,7 @@ namespace CharacterSheet
         private void ArmorSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
             int NewDefense;
+            //When you click an Armor in the comboBox, it becomes the currentArmor and it's values
             foreach (Armor armor in Singleton.Instance.mArmor)
             {
                 if (ArmorSelection.SelectedItem.Equals(armor.Name))
@@ -59,47 +65,95 @@ namespace CharacterSheet
                     break;
                 }
             }
+            //This adds the Players defense and item's value together to get a new defense
             NewDefense = Singleton.Instance.currentHero.Defense + Singleton.Instance.currentArmor.Defense;
             ArmorCombo.Text = NewDefense.ToString();
         }
 
         private void ItemCombo_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
+            //Adding each Player to the comboBox
             foreach (Players player in Singleton.Instance.mHeros)
                 PlayerSelection.Items.Add(player.Name);
 
+            //Adding each Item to the comboBox
             foreach (Items item in Singleton.Instance.mItems)
                 ItemSelection.Items.Add(item.Name);
 
+            //Adding each Armor to the comboBox
             foreach (Armor armor in Singleton.Instance.mArmor)
                 ArmorSelection.Items.Add(armor.Name);
         }
 
         private void SaveData_Click(object sender, EventArgs e)
         {
-            AssessmentSerialization<Players>.Serialize("CurrentPlayer", Singleton.Instance.currentHero);
-            AssessmentSerialization<Items>.Serialize("CurrentItem", Singleton.Instance.currentItem);
-            AssessmentSerialization<Armor>.Serialize("CurrentArmor", Singleton.Instance.currentArmor);
-            PlayerSelection.SelectionStart = PlayerSelection.SelectedIndex;
-            ItemSelection.SelectionStart = ItemSelection.SelectedIndex;
-            ArmorSelection.SelectionStart = ArmorSelection.SelectedIndex;
+            //Saves the current information for currentHero, currentItem, and currentArmor
+            if (PlayerSelection != null)
+            {
+                AssessmentSerialization<Players>.Serialize("CurrentPlayer", Singleton.Instance.currentHero);
+                //PlayerSelection.SelectionStart = PlayerSelection.SelectedIndex;//This is the currentHero
+            }
+            if (ItemSelection != null)
+            {
+                AssessmentSerialization<Items>.Serialize("CurrentItem", Singleton.Instance.currentItem);
+                //ItemSelection.SelectionStart = ItemSelection.SelectedIndex;//This is the currentItem
+            }
+            if (ArmorSelection != null)
+            {
+                AssessmentSerialization<Armor>.Serialize("CurrentArmor", Singleton.Instance.currentArmor);
+                //ArmorSelection.SelectionStart = ArmorSelection.SelectedIndex;//This is the currentArmor
+            }
             SaveLoad.AppendText("                      Saved");
         }
 
         private void LoadData_Click(object sender, EventArgs e)
         {
-            Singleton.Instance.currentHero = AssessmentSerialization<Players>.Deserialize("CurrentPlayer");
-            Singleton.Instance.currentItem = AssessmentSerialization<Items>.Deserialize("CurrentItem");
-            Singleton.Instance.currentArmor = AssessmentSerialization<Armor>.Deserialize("CurrentArmor");
-            PlayerSelection.SelectedItem = Singleton.Instance.currentHero.Name;
-            ItemSelection.SelectedItem = Singleton.Instance.currentItem.Name;
-            ArmorSelection.SelectedItem = Singleton.Instance.currentArmor.Name;
+            //Loads the saved information for currentHero, currentItem, and currentArmor
+            if (Singleton.Instance.currentHero != null)
+            {
+                Singleton.Instance.currentHero = AssessmentSerialization<Players>.Deserialize("CurrentPlayer");
+            }
+            if (Singleton.Instance.currentItem != null)
+            {
+                Singleton.Instance.currentItem = AssessmentSerialization<Items>.Deserialize("CurrentItem");
+            }
+            if (Singleton.Instance.currentArmor != null)
+            {
+                Singleton.Instance.currentArmor = AssessmentSerialization<Armor>.Deserialize("CurrentArmor");
+            }
+            PlayerSelection.SelectedItem = Singleton.Instance.currentHero.Name;//Makes the comboBox currentHero equal the saved currentHero
+            //PlayerAttack.Text = Singleton.Instance.currentHero.Attack.ToString();//Updates the Attack after loading
+            //PlayerDefense.Text = Singleton.Instance.currentHero.Defense.ToString();//Updates the defense after loading
+            ItemSelection.SelectedItem = Singleton.Instance.currentItem.Name;//Makes the comboBox currentItem equal the saved currentItem
+            ArmorSelection.SelectedItem = Singleton.Instance.currentArmor.Name;//Makes the comboBox currentArmor equal the saved currentArmor
             SaveLoad.AppendText("                    Loaded");
+        }
+
+        private void updateData()
+        {
+            //This was made to update the data whenever you choose a new Player, it updates the attack and defense after clicking the new Player
+            int NewAttack;
+            int NewDefense;
+            if (Singleton.Instance.currentHero != null)
+            {
+                PlayerAttack.Text = Singleton.Instance.currentHero.Attack.ToString();
+                PlayerDefense.Text = Singleton.Instance.currentHero.Defense.ToString();
+            }
+            if (Singleton.Instance.currentItem != null)
+            {
+                NewAttack = Singleton.Instance.currentHero.Attack + Singleton.Instance.currentItem.Attack;
+                ItemCombo.Text = NewAttack.ToString();
+            }
+            if (Singleton.Instance.currentArmor != null)
+            {
+                NewDefense = Singleton.Instance.currentHero.Defense + Singleton.Instance.currentArmor.Defense;
+                ArmorCombo.Text = NewDefense.ToString();
+            }
         }
 
         private void SaveLoad_TextChanged(object sender, EventArgs e)
@@ -115,6 +169,12 @@ namespace CharacterSheet
         private void Characterchoice_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void UpdateD_Click(object sender, EventArgs e)
+        {
+            //Whenever you choose a new Player, use the Update button to fix the values
+            updateData();
         }
     }
 }

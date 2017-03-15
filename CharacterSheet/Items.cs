@@ -8,8 +8,9 @@ namespace CharacterSheet
 {
     public class Items
     {
+        //class Items that allows modification to the Players attack
         Items() { }
-
+        //Default Constructor
         public string m_Name;
         public int m_Attack;
 

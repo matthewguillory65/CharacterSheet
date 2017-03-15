@@ -42,8 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.Characterchoice = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.Characterchoice)).BeginInit();
+            this.UpdateD = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PlayerSelection
@@ -173,21 +172,22 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Attack with Item";
             // 
-            // Characterchoice
+            // UpdateD
             // 
-            this.Characterchoice.Location = new System.Drawing.Point(322, 13);
-            this.Characterchoice.Name = "Characterchoice";
-            this.Characterchoice.Size = new System.Drawing.Size(187, 193);
-            this.Characterchoice.TabIndex = 14;
-            this.Characterchoice.TabStop = false;
-            this.Characterchoice.Click += new System.EventHandler(this.Characterchoice_Click);
+            this.UpdateD.Location = new System.Drawing.Point(236, 183);
+            this.UpdateD.Name = "UpdateD";
+            this.UpdateD.Size = new System.Drawing.Size(75, 23);
+            this.UpdateD.TabIndex = 14;
+            this.UpdateD.Text = "Update";
+            this.UpdateD.UseVisualStyleBackColor = true;
+            this.UpdateD.Click += new System.EventHandler(this.UpdateD_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 229);
-            this.Controls.Add(this.Characterchoice);
+            this.ClientSize = new System.Drawing.Size(352, 229);
+            this.Controls.Add(this.UpdateD);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -205,7 +205,6 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load_1);
-            ((System.ComponentModel.ISupportInitialize)(this.Characterchoice)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,7 +226,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox Characterchoice;
+        private System.Windows.Forms.Button UpdateD;
     }
 }
 

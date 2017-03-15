@@ -8,7 +8,9 @@ namespace CharacterSheet
 {
     public class Players
     {
+        //class that gives a player "What it is".
         Players() { }
+        //Default Constructor
         public string m_Name;
         public int m_Attack;
         public int m_Defense;
