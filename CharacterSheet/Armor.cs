@@ -11,15 +11,15 @@ namespace CharacterSheet
         //Class for armor that allows modification to the Players defense stat
         Armor() { }
         //Default Constructor
-        string m_Name;
-        int m_Defense;
+        private string m_Name;
+        private int m_Defense;
 
-        public string Name
+        public string Name//Getter and Setter values for Armor Name
         {
             get { return m_Name; }
             set { m_Name = value; }
         }
-        public int Defense
+        public int Defense//Getter and Setter values for Armor Defense
         {
             get { return m_Defense; }
             set { m_Defense = value; }
@@ -27,8 +27,8 @@ namespace CharacterSheet
 
         public Armor(string name, int defense)
         {
-            m_Name = name;
-            m_Defense = defense;
+            m_Name = name;//Making the public Name equal the private m_Name
+            m_Defense = defense;//Making the public Defense equal the private m_Defense
         }
     }
 }

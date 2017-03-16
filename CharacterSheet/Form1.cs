@@ -16,6 +16,7 @@ namespace CharacterSheet
 
         void SetUp()
         {
+            //Saves the Player List
             AssessmentSerialization<List<Players>>.Serialize("ListofPlayersDefualt", Singleton.Instance.mHeros);
         }
         
@@ -30,7 +31,7 @@ namespace CharacterSheet
                     break;
                 }
             }
-            //Makes the attack and defense able to be seen
+            //Makes the attack and defense able to be seen on selection of Player
             PlayerAttack.Text = Singleton.Instance.currentHero.Attack.ToString();
             PlayerDefense.Text = Singleton.Instance.currentHero.Defense.ToString();
         }
@@ -41,7 +42,7 @@ namespace CharacterSheet
             //When you click an Item in the comboBox, it becomes the currentItem and it's values
             foreach (Items item in Singleton.Instance.mItems)
             {
-                if (ItemSelection.SelectedItem.Equals(item.m_Name))
+                if (ItemSelection.SelectedItem.Equals(item.Name))
                 {
                     Singleton.Instance.currentItem = item;
                     break;
@@ -75,11 +76,6 @@ namespace CharacterSheet
             }
         }
 
-        //private void ItemCombo_TextChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
         private void Form1_Load_1(object sender, EventArgs e)
         {
             //Adding each Player to the comboBox
@@ -93,6 +89,11 @@ namespace CharacterSheet
             //Adding each Armor to the comboBox
             foreach (Armor armor in Singleton.Instance.mArmor)
                 ArmorSelection.Items.Add(armor.Name);
+
+            //On startup of the application, the selection for each drop down box is set to None automatically
+            PlayerSelection.SelectedIndex = 0;
+            ItemSelection.SelectedIndex = 0;
+            ArmorSelection.SelectedIndex = 0;
         }
 
         private void SaveData_Click(object sender, EventArgs e)
@@ -115,6 +116,8 @@ namespace CharacterSheet
 
         private void LoadData_Click(object sender, EventArgs e)
         {
+            int NewAttack;
+            int NewDefense;
             //Loads the saved information for currentHero, currentItem, and currentArmor
             if (Singleton.Instance.currentHero != null)
             {
@@ -125,34 +128,18 @@ namespace CharacterSheet
             {
                 Singleton.Instance.currentItem = AssessmentSerialization<Items>.Deserialize("CurrentItem");//If there is no Item chosen, the program will not break
                 ItemSelection.SelectedItem = Singleton.Instance.currentItem.Name;//Makes the comboBox currentItem equal the saved currentItem
+                NewAttack = Singleton.Instance.currentHero.Attack + Singleton.Instance.currentItem.Attack;//When Loaded, it automatically fixes the combined attack
+                ItemCombo.Text = NewAttack.ToString();
             }
             if (Singleton.Instance.currentArmor != null)
             {
                 Singleton.Instance.currentArmor = AssessmentSerialization<Armor>.Deserialize("CurrentArmor");//If there is no Armor chosen, the program will not break
                 ArmorSelection.SelectedItem = Singleton.Instance.currentArmor.Name;//Makes the comboBox currentArmor equal the saved currentArmor
+                NewDefense = Singleton.Instance.currentHero.Defense + Singleton.Instance.currentArmor.Defense;//When Loaded, it automatically fixes the combined defense
+                ArmorCombo.Text = NewDefense.ToString();
             }
             SaveLoad.AppendText("                    Loaded");
         }
-
-        //private void updateData()
-        //{
-            
-        //}
-
-        //private void SaveLoad_TextChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void ArmorCombo_TextChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void Characterchoice_Click(object sender, EventArgs e)
-        //{
-
-        //}
 
         private void UpdateD_Click(object sender, EventArgs e)
         {

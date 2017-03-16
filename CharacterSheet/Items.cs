@@ -11,15 +11,15 @@ namespace CharacterSheet
         //class Items that allows modification to the Players attack
         Items() { }
         //Default Constructor
-        public string m_Name;
-        public int m_Attack;
+        private string m_Name;
+        private int m_Attack;
 
-        public string Name
+        public string Name//Getter and Setter values for Items Name
         {
             get { return m_Name; }
             set { m_Name = value; }
         }
-        public int Attack
+        public int Attack//Getter and Setter values for Items Attack
         {
             get { return m_Attack; }
             set { m_Attack = value; }
@@ -27,8 +27,8 @@ namespace CharacterSheet
 
         public Items(int attack, string name)
         {
-            m_Name = name;
-            m_Attack = attack;
+            m_Name = name;//Making the public Name equal the private m_Name
+            m_Attack = attack;//Making the public Attack equal the private m_Attack
         }
     }
 }
