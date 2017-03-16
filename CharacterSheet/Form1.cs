@@ -113,18 +113,18 @@ namespace CharacterSheet
             if (Singleton.Instance.currentHero != null)
             {
                 Singleton.Instance.currentHero = AssessmentSerialization<Players>.Deserialize("CurrentPlayer");//If there is no Player chosen, the program will not break
+                PlayerSelection.SelectedItem = Singleton.Instance.currentHero.Name;//Makes the comboBox currentHero equal the saved currentHero
             }
             if (Singleton.Instance.currentItem != null)
             {
                 Singleton.Instance.currentItem = AssessmentSerialization<Items>.Deserialize("CurrentItem");//If there is no Item chosen, the program will not break
+                ItemSelection.SelectedItem = Singleton.Instance.currentItem.Name;//Makes the comboBox currentItem equal the saved currentItem
             }
             if (Singleton.Instance.currentArmor != null)
             {
                 Singleton.Instance.currentArmor = AssessmentSerialization<Armor>.Deserialize("CurrentArmor");//If there is no Armor chosen, the program will not break
+                ArmorSelection.SelectedItem = Singleton.Instance.currentArmor.Name;//Makes the comboBox currentArmor equal the saved currentArmor
             }
-            PlayerSelection.SelectedItem = Singleton.Instance.currentHero.Name;//Makes the comboBox currentHero equal the saved currentHero
-            ItemSelection.SelectedItem = Singleton.Instance.currentItem.Name;//Makes the comboBox currentItem equal the saved currentItem
-            ArmorSelection.SelectedItem = Singleton.Instance.currentArmor.Name;//Makes the comboBox currentArmor equal the saved currentArmor
             SaveLoad.AppendText("                    Loaded");
         }
 

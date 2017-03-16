@@ -86,7 +86,6 @@
             this.ItemCombo.ReadOnly = true;
             this.ItemCombo.Size = new System.Drawing.Size(56, 20);
             this.ItemCombo.TabIndex = 4;
-            this.ItemCombo.TextChanged += new System.EventHandler(this.ItemCombo_TextChanged);
             // 
             // SaveData
             // 
@@ -116,7 +115,6 @@
             this.SaveLoad.Size = new System.Drawing.Size(100, 20);
             this.SaveLoad.TabIndex = 7;
             this.SaveLoad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SaveLoad.TextChanged += new System.EventHandler(this.SaveLoad_TextChanged);
             // 
             // ArmorSelection
             // 
@@ -134,7 +132,6 @@
             this.ArmorCombo.ReadOnly = true;
             this.ArmorCombo.Size = new System.Drawing.Size(56, 20);
             this.ArmorCombo.TabIndex = 9;
-            this.ArmorCombo.TextChanged += new System.EventHandler(this.ArmorCombo_TextChanged);
             // 
             // label1
             // 
