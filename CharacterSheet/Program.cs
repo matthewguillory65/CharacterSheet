@@ -39,6 +39,7 @@ namespace CharacterSheet
             Items Sword = new Items(100, "Sword");
             Items Gun = new Items(200, "Gun");
             Items Rocket = new Items(300, "Rocket");
+            Items Excalibur = new Items(5000, "Excalibur");
 
             //Creating the List for the Items
             Singleton.Instance.mItems = new List<Items>();
@@ -48,6 +49,7 @@ namespace CharacterSheet
             Singleton.Instance.mItems.Add(Sword);
             Singleton.Instance.mItems.Add(Gun);
             Singleton.Instance.mItems.Add(Rocket);
+            Singleton.Instance.mItems.Add(Excalibur);
             #endregion
 
             #region Armor
@@ -56,6 +58,7 @@ namespace CharacterSheet
             Armor LightArmor = new Armor("LightArmor", 100);
             Armor SimpleArmor = new Armor("SimpleArmor", 200);
             Armor HeavyArmor = new Armor("HeavyArmor", 300);
+            Armor Zero = new Armor("Zero's Armor", 5000);
 
             //Creating the List for the Armor
             Singleton.Instance.mArmor = new List<Armor>();
@@ -65,6 +68,7 @@ namespace CharacterSheet
             Singleton.Instance.mArmor.Add(LightArmor);
             Singleton.Instance.mArmor.Add(SimpleArmor);
             Singleton.Instance.mArmor.Add(HeavyArmor);
+            Singleton.Instance.mArmor.Add(Zero);
             #endregion
 
             Application.EnableVisualStyles();

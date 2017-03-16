@@ -68,7 +68,7 @@
             // 
             // PlayerDefense
             // 
-            this.PlayerDefense.Location = new System.Drawing.Point(201, 13);
+            this.PlayerDefense.Location = new System.Drawing.Point(233, 13);
             this.PlayerDefense.Name = "PlayerDefense";
             this.PlayerDefense.ReadOnly = true;
             this.PlayerDefense.Size = new System.Drawing.Size(59, 20);
@@ -140,7 +140,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(117, 36);
+            this.label1.Location = new System.Drawing.Point(132, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 10;
@@ -149,7 +149,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(201, 36);
+            this.label2.Location = new System.Drawing.Point(223, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 13);
             this.label2.TabIndex = 11;
