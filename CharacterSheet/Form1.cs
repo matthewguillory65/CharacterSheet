@@ -47,9 +47,12 @@ namespace CharacterSheet
                     break;
                 }
             }
-            //This adds the Players attack and item's value together to get a new attack
-            NewAttack = Singleton.Instance.currentHero.Attack + Singleton.Instance.currentItem.Attack;
-            ItemCombo.Text = NewAttack.ToString();
+            if (PlayerSelection.SelectedValue != null)
+            {
+                //This adds the Players attack and item's value together to get a new attack
+                NewAttack = Singleton.Instance.currentHero.Attack + Singleton.Instance.currentItem.Attack;
+                ItemCombo.Text = NewAttack.ToString();
+            }
         }
 
         private void ArmorSelection_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,9 +67,12 @@ namespace CharacterSheet
                     break;
                 }
             }
-            //This adds the Players defense and item's value together to get a new defense
-            NewDefense = Singleton.Instance.currentHero.Defense + Singleton.Instance.currentArmor.Defense;
-            ArmorCombo.Text = NewDefense.ToString();
+            if (PlayerSelection.SelectedValue != null)
+            {
+                //This adds the Players defense and item's value together to get a new defense
+                NewDefense = Singleton.Instance.currentHero.Defense + Singleton.Instance.currentArmor.Defense;
+                ArmorCombo.Text = NewDefense.ToString();
+            }
         }
 
         //private void ItemCombo_TextChanged(object sender, EventArgs e)
